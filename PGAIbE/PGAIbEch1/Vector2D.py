@@ -51,7 +51,7 @@ class Vector2D():
     
     #returns length of vector, squared
     def LengthSq(self):
-        return (math.pow(self.x, 2) + math.pow(self.y, 2))
+        return (self.x ** 2 + self.y ** 2)
     
     #returns copy of Vector2D with normalized x,y
     def Normalize(self):
@@ -67,28 +67,40 @@ class Vector2D():
     #returns positive if v2 is clockwise of self
     #returns negative if counterclockwise of self
     #remember, assume Y points down, and X increasing to the right like a Window app 
+    #http://stackoverflow.com/questions/2150050/finding-signed-angle-between-vectors
+    #returns in radians!
     def Sign(self, v2):
-        return False
+        return (math.atan2(v2.y, v2.x) - math.atan2(self.x, self.y))
     
     #return the vector that is perpendicular to self
+    #by popular notation, a perpendicular transformation goes in a counterclockwise
+    #motion
+    #http://gamedev.stackexchange.com/questions/70075/how-can-i-find-the-perpendicular-to-a-2d-vector
     def Perp(self):
-        return False
+        temp = self
+        temp.x = self.y
+        temp.y = 0-self.x
+        return temp
     
+    #We won't implement the "Truncate" method because a max length is not defined
     #adjust x and y so that the length of the vector does not exceed max
-    def Truncate(self):
-        return False
+    #def Truncate(self):
+    #    return False
     
     #returns the distance between self and v2
     def Distance(self, v2):
-        return False
+        return math.sqrt((self.y-v2.y)**2 + (self.x-v2.x)**2)
     
     #returns the distance between self and v2, squared
     def DistanceSq(self, v2):
-        return False
+        return (self.y-v2.y)**2 + (self.x-v2.x)**2
     
     #returns the reverse of this Vector
     def GetReverse(self):
-        return False
+        temp = self
+        temp.x = -(temp.x)
+        temp.y = -(temp.y)
+        return temp
     
     #+= operator
     def __iadd__(self, v2):
