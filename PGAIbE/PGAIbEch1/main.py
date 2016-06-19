@@ -28,4 +28,24 @@ print ("y = ", test.y)
 
 print("dot from test and test2 = ", test.Dot(test2))
 
+new1 = Vector2D(1,2)
+new2 = Vector2D(3,4)
+
+
 print("signed angle between test and test2 = ", test.Sign(test2))
+
+new1 += new2
+
+print ("new1: x = ", new1.x, ", y = ", new1.y)
+
+new1 -= new2
+
+print ("new1: x = ", new1.x, ", y = ", new1.y)
+
+new1 *= Vector2D(2,2)
+
+print ("new1: x = ", new1.x, ", y = ", new1.y)
+
+new1 /= Vector2D(2,2)
+
+print ("new1: x = ", new1.x, ", y = ", new1.y)

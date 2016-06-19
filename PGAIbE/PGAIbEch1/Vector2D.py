@@ -121,7 +121,9 @@ class Vector2D():
         return self
     
     #/= operator
-    def __idiv__(self, v2):
+    #below has documentation between "true" division and "floor" divison (with assignment)
+    #https://docs.python.org/3/reference/datamodel.html
+    def __itruediv__(self, v2):
         self.x = self.x / v2.x
         self.y = self.y / v2.y
         return self
